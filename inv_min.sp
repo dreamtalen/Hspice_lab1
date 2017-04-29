@@ -32,7 +32,7 @@ VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 250ns 500ns
 .measure TRAN tp param='(tphl+tplh)/2'
 .measure TRAN power AVG P(VDD) FROM=3us TO=5us
 .measure TRAN power_abs param='abs(power)'
-.measure TRAN PDP param='power*250ns'
+.measure TRAN PDP param='power_abs*250ns'
 .measure TRAN dynamic_power param='PDP/tp'
 .measure TRAN EDP param='PDP*tp'
 
