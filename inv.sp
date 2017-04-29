@@ -5,7 +5,7 @@
 .TEMP 85
 .param h=4
 *.param vds_sup=0.1
-.param supply=0.4
+.param supply=0.85
 
 .param finp=1
 .param finn=1
@@ -25,14 +25,13 @@ xpmos Y A VSS VSS lpfet l=length nfin=nfinp
 *
 X1 A B INV
 X2 B C INV_EX M='H'
-X3 C D INV_EX M='4'
 *
 *
 VDD VDD GND 'SUPPLY'
 VSS VSS GND 'SUPPLY'
 VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 250ns 500ns
 *
-.tran 1ps 10us SWEEP SUPPLY 0.85 0.2 -0.01
+.tran 1ps 10us SWEEP SUPPLY 0 10 1
 .op all 
 
 .measure TRAN tphl
@@ -41,6 +40,5 @@ VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 250ns 500ns
 .measure TRAN tplh
 +	TRIG v(a) VAL='SUPPLY/2' FALL=19
 +	TARG V(b) VAL='SUPPLY/2' RISE=19
-.measure TRAN tp param='(tphl+tplh)/2'
 
 .end
