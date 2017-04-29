@@ -4,7 +4,7 @@
 .global vdd gnd vss
 .TEMP 85
 .param h=4
-.param supply=0.85
+.param supply=0.2
 
 .param finp=1
 .param finn=1
@@ -22,7 +22,7 @@ VDD VDD GND 'SUPPLY'
 VSS VSS GND 'SUPPLY'
 VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 250ns 500ns
 
-.tran 1ps 10us SWEEP SUPPLY 0.85 0.2 -0.01
+.tran 1ps 10us SWEEP SUPPLY 0.2 0.85 0.01
 .op all 
 
 .measure TRAN tphl
