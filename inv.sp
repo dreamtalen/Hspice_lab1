@@ -31,7 +31,7 @@ VDD VDD GND 'SUPPLY'
 VSS VSS GND 'SUPPLY'
 VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 250ns 500ns
 *
-.tran 1ps 10us SWEEP finp 0 10 1
+.tran 1ps 10us SWEEP finp 1 10 1
 .op all 
 
 .measure TRAN tphl
