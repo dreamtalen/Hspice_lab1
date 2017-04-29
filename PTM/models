@@ -42,16 +42,16 @@ mpfet d g s x pfet L=l NFIN=nfin
 .LIB ptm16lstp
 
 .subckt lnfet d g s x l=lg nfin=1
-.include 'C:/synopsys/PTM/modelfiles/lstp/16nfet.pm'
+.include '../modelfiles/lstp/16nfet.pm'
 mlnfet d g s x nfet L=l NFIN=nfin
 .ends lnfet
 
 .subckt lpfet d g s x l=lg nfin=1
-.include 'C:/synopsys/PTM/modelfiles/lstp/16pfet.pm'
+.include '../modelfiles/lstp/16pfet.pm'
 mlpfet d g s x pfet L=l NFIN=nfin
 .ends lpfet
 
-.lib 'C:/synopsys/PTM/param.inc' 16nm
+.lib '../param.inc' 16nm
 
 .ENDL ptm16lstp
 ***********************************************************************************
