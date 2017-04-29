@@ -1,8 +1,9 @@
-.TITLE Single INV
+.TITLE Single inv_chain
 .lib "/home/wjin/dmtalen/hspice/Hspice_lab1/PTM/models" ptm16lstp
 .options acct list post runlvl=6
 .global vdd gnd vss
 .TEMP 85
+.param h=5
 .param supply=0.85
 
 .param finp=1
@@ -14,20 +15,32 @@
 xnmos Y A GND GND lnfet l=length nfin=nfinn
 xpmos Y A VDD VDD lpfet l=length nfin=nfinp
 .ENDS
+.SUBCKT INV_CL A Y nfinn=finn nfinp=finp
+xnmos Y A GND GND lnfet l=length nfin=nfinn
+xpmos Y A VSS VSS lpfet l=length nfin=nfinp
+.ENDS
 
+***********3 stage*************
 X1 A B INV
+X2 B C INV M='H'
+X3 C D INV M='H**2'
+
+XL1 D E INV_EX M='120'
+XL2 E F INV_EX M='4'
 
 VDD VDD GND 'SUPPLY'
+VSS VSS GND 'SUPPLY'
 VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 250ns 500ns
 
-.tran 1ps 10us SWEEP finp 1 10 1
+.tran 1ps 10us SWEEP H 2 8 0.5
 .op all 
 
 .measure TRAN tphl
 +	TRIG v(a) VAL='SUPPLY/2' RISE=10
-+	TARG v(b) VAL='SUPPLY/2' FALL=10
++	TARG v(d) VAL='SUPPLY/2' FALL=10
 .measure TRAN tplh
 +	TRIG v(a) VAL='SUPPLY/2' FALL=10
-+	TARG v(b) VAL='SUPPLY/2' RISE=10
++	TARG v(d) VAL='SUPPLY/2' RISE=10
+.measure TRAN tp param='(tphl+tplh)/2'
 
 .end
