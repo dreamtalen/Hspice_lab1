@@ -1,4 +1,4 @@
-.TITLE Single INV
+.TITLE Single inv_min
 .lib "/home/wjin/dmtalen/hspice/Hspice_lab1/PTM/models" ptm16lstp
 .options acct list post runlvl=6
 .global vdd gnd vss
@@ -22,7 +22,7 @@ VDD VDD GND 'SUPPLY'
 VSS VSS GND 'SUPPLY'
 VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 250ns 500ns
 
-.tran 1ps 10us SWEEP finp 1 10 1
+.tran 1ps 10us SWEEP SUPPLY 0.85 0.2 -0.01
 .op all 
 
 .measure TRAN tphl
@@ -31,5 +31,13 @@ VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 250ns 500ns
 .measure TRAN tplh
 +	TRIG v(a) VAL='SUPPLY/2' FALL=10
 +	TARG V(b) VAL='SUPPLY/2' RISE=10
+.measure TRAN tp param='(tphl+tplh)/2'
+
+.measure TRAN power AVG P(VDD) FROM=50ps+500ns*10 TO=50ps+500ns*20
+.measure TRAN power_abs param='abs(power)'
+
+.measure TRAN PDP param='pwr_abs*250ns'
+.measure TRAN dynamic_power param='PDP/tp'
+.measure TRAN EDP param='PDP*tp'
 
 .end
