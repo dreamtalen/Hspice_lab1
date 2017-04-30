@@ -39,7 +39,7 @@ VSS VSS GND 'SUPPLY'
 VINA C GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 230ps 500ps
 VINB B GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 480ps 1ns
 VINC A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 980ps 2ns
-*
+
 .tran 1ps 10ns
 .op all 
 
