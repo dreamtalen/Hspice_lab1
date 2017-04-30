@@ -6,7 +6,7 @@
 .param supply=0.85
 
 .param finp=2
-.param finn=2
+.param finn=2  
 .param length=20n
 
 .SUBCKT XOR A B C Y nfinn=finn nfinp=finp
