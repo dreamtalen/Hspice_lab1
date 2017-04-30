@@ -39,9 +39,10 @@ XL2 E F INV_CL M='4'
 
 VDD VDD GND 'SUPPLY'
 VSS VSS GND 'SUPPLY'
-VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 100ns 200ns
 
-.tran 1ps 10us SWEEP H 2 8 0.5
+VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 480ps 1ns
+
+.tran 1ps 100ns SWEEP H 2 8 0.5
 .op all 
 
 .measure TRAN tphl

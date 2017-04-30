@@ -18,7 +18,7 @@ xpmos Y A VDD VDD lpfet l=length nfin=nfinp
 X1 A B INV
 
 VDD VDD GND 'SUPPLY'
-VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 100ns 200ns
+VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 200ns 400ns
 
 .tran 1ps 10us SWEEP SUPPLY 0.2 0.85 0.01
 .op all 
@@ -30,9 +30,9 @@ VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 100ns 200ns
 +	TRIG v(a) VAL='SUPPLY/2' FALL=10
 +	TARG v(b) VAL='SUPPLY/2' RISE=10
 .measure TRAN tp param='(tphl+tplh)/2'
-.measure TRAN power AVG P(VDD) FROM=3us TO=5us
+.measure TRAN power AVG P(VDD) FROM=3us TO=8us
 .measure TRAN power_abs param='abs(power)'
-.measure TRAN PDP param='power_abs*100ns'
+.measure TRAN PDP param='power_abs*200ns/2'
 .measure TRAN dynamic_power param='PDP/tp'
 .measure TRAN EDP param='PDP*tp'
 
