@@ -84,7 +84,4 @@ VINC A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 980ps 2ns
 .measure TRAN tp param='(tp1+tp2+tp3+tp4+tp5+tp6)/6'
 .measure TRAN power AVG P(VDD) FROM=2ns TO=8ns
 .measure TRAN power_abs param='abs(power)'
-.measure TRAN PDP param='power_abs*2ns/6'
-.measure TRAN dynamic_power param='PDP/tp'
-.measure TRAN EDP param='PDP*tp'
 .end
