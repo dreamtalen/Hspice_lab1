@@ -18,7 +18,7 @@ xpmos Y A VDD VDD lpfet l=length nfin=nfinp
 X1 A B INV
 
 VDD VDD GND 'SUPPLY'
-VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 250ns 500ns
+VIN A GND PULSE 0 'SUPPLY' 50ps 10ps 10ps 480ps 1ns
 
 .tran 1ps 10us SWEEP finp 1 10 1
 .op all 
