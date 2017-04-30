@@ -1,4 +1,4 @@
-.TITLE Single XOR_reference
+.TITLE Single XOR_3input_tran
 .lib "/home/wjin/dmtalen/hspice/Hspice_lab1/PTM/models" ptm16lstp
 .options acct list post runlvl=6
 .global vdd gnd vss
